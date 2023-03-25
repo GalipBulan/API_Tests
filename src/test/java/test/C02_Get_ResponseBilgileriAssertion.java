@@ -22,7 +22,7 @@ public class C02_Get_ResponseBilgileriAssertion {
 
         // 1 - Gonderecegimiz Request icin gerekli olan URL ve ihtiyacimiz varsa Body hazirla.
 
-        String url = "https://restful-booker.herokuapp.com/booking/1234";
+        String url = "https://restful-booker.herokuapp.com/booking/620";
 
         // 2 - Eger soruda istenirse Expected Data hazirla.
 
@@ -31,6 +31,14 @@ public class C02_Get_ResponseBilgileriAssertion {
         Response response= given().when().get(url);
 
         response.prettyPrint();
+
+        // Istersek response ile gelen degerleri yazdirabiliriz.
+
+        System.out.println(response.getHeader("Server"));
+        System.out.println(response.getContentType());
+        System.out.println(response.getStatusCode());
+        System.out.println(response.getStatusLine());
+        System.out.println(response.getTime());
 
         // 4 - Expected Data ile Actual datanin karsilastirmasi - Assertion.
         response.
