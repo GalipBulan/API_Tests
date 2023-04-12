@@ -3,12 +3,11 @@ package test;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
-import org.json.JSONObject;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class C5_Get_ResponseBodyTesti {
+public class C05_Get_ResponseBodyTesti {
 
     /* https://jsonplaceholder.typicode.com/posts/44 url'ine bir GET request
     yolladigimizdinda donen Response’in 	status code'unun 200,

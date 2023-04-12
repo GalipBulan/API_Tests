@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 
 public class C12_Post_ExpectedDataVeJsonPathIleAssertion {
 
@@ -75,7 +76,9 @@ public class C12_Post_ExpectedDataVeJsonPathIleAssertion {
         Response response = given().
                 contentType(ContentType.JSON).
                 when().
-                body(reqBody.toString()).post(url);
+                body(reqBody.toString()) // Buraya reqBody gonderilir.
+                .post(url);
+        // expBody ile sadece Asertion asamasinda isimiz olur.
 
         response.prettyPrint();
 
@@ -84,6 +87,16 @@ public class C12_Post_ExpectedDataVeJsonPathIleAssertion {
         // NOT : Oncelikle gereken sey Response'i JSONPath objesine donusturmek
 
         JsonPath resJsonPath = response.jsonPath();
+
+        assertEquals(expBody.getJSONObject("booking").get("firstname"),resJsonPath.get("booking.firstname"));
+        assertEquals(expBody.getJSONObject("booking").get("lastname"),resJsonPath.get("booking.lastname"));
+        assertEquals(expBody.getJSONObject("booking").get("additionalneeds"),resJsonPath.get("booking.additionalneeds"));
+        assertEquals(expBody.getJSONObject("booking").get("totalprice"),resJsonPath.get("booking.totalprice"));
+        assertEquals(expBody.getJSONObject("booking").get("depositpaid"),resJsonPath.get("booking.depositpaid"));
+        assertEquals(expBody.getJSONObject("booking").getJSONObject("bookingdates").get("checkin"),
+                resJsonPath.get("booking.bookingdates.checkin"));
+        assertEquals(expBody.getJSONObject("booking").getJSONObject("bookingdates").get("checkout"),
+                resJsonPath.get("booking.bookingdates.checkout"));
     }
 
 

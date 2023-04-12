@@ -10,7 +10,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*; // Matchers.* yapinca Matchers. clasindan gelen butun yontemleri bir kez inport edip kullanabiliriz.
 
 
-public class C6_Post_ResponseBodyTesti {
+public class C06_Post_ResponseBodyTesti {
 
    /*  https://jsonplaceholder.typicode.com/posts
          url’ine asagidaki body ile bir POST request gonderdigimizde
